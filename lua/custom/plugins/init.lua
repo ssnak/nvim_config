@@ -54,6 +54,12 @@ return {
     dependencies = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
+      'nvim-telescope/telescope.nvim',
     },
+    config = function(opts)
+      require('noice').setup(opts)
+      require('telescope').load_extension 'noice'
+      vim.keymap.set('n', '<leader>sm', '<cmd>Telescope noice<cr>', { desc = '[S]earch [M]essages' })
+    end,
   },
 }
