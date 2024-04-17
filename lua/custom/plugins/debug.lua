@@ -60,7 +60,10 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Install golang specific config
-    require('dap-go').setup()
-    require('dap-python').setup()
+    local mason = vim.fn.stdpath 'data' .. '/mason'
+    local bin = mason .. '/bin'
+    local packages = mason .. '/packages'
+    require('dap-go').setup { delve = { path = bin .. '/dlv.cmd' } }
+    require('dap-python').setup(packages .. 'debugpy/venv/Scripts/python')
   end,
 }
