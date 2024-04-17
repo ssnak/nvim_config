@@ -5,7 +5,6 @@ local keymaps = {
     { ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' } },
     { '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' } },
     { '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' } },
-    { '<leader>o', '<cmd>Oil<cr>', { desc = 'Open [O]il' } },
   },
 
   i = {
