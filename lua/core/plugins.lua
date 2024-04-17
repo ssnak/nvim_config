@@ -105,6 +105,12 @@ return {
 
       { 'j-hui/fidget.nvim', opts = {} },
       { 'folke/neodev.nvim', opts = {} },
+      {
+        'lopi-py/luau-lsp.nvim',
+        dependencies = {
+          'nvim-lua/plenary.nvim',
+        },
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -166,6 +172,13 @@ return {
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
+          end,
+          luau_lsp = function()
+            require('luau-lsp').setup {
+              fflags = {
+                sync = false,
+              },
+            }
           end,
         },
       }
