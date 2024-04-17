@@ -21,6 +21,7 @@ return {
     require('mason-nvim-dap').setup {
       automatic_setup = true,
       handlers = {},
+      automatic_installation = false,
       ensure_installed = require 'core.debuggers',
     }
 
@@ -35,8 +36,10 @@ return {
     end, { desc = 'Debug: Set Breakpoint' })
 
     -- For more information, see |:help nvim-dap-ui|
+    --- @diagnostic disable-next-line: missing-fields
     dapui.setup {
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      --- @diagnostic disable-next-line: missing-fields
       controls = {
         icons = {
           pause = '⏸',
