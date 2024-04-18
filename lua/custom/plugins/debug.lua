@@ -67,6 +67,6 @@ return {
     local bin = mason .. '/bin'
     local packages = mason .. '/packages'
     require('dap-go').setup { delve = { path = bin .. '/dlv.cmd' } }
-    require('dap-python').setup(packages .. 'debugpy/venv/Scripts/python')
+    require('dap-python').setup(packages .. '/debugpy/venv/Scripts/python')
   end,
 }
