@@ -62,4 +62,14 @@ return {
       vim.keymap.set('n', '<leader>sm', '<cmd>Telescope noice<cr>', { desc = '[S]earch [M]essages' })
     end,
   },
+  {
+    'snak/runner.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require 'runner'
+    end,
+    enabled = true,
+  },
 }
