@@ -132,6 +132,10 @@ return {
     },
     opts = {}, -- for default options, refer to the configuration section for custom setup.
   },
+  {
+    'max397574/better-escape.nvim',
+    config = true,
+  },
 
   -- local plugins
   {
