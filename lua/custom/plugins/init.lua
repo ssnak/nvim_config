@@ -51,6 +51,7 @@ return {
             require("noice").setup {}
             require("telescope").load_extension "noice"
             vim.keymap.set("n", "<leader>sm", "<cmd>Telescope noice<cr>", { desc = "[S]earch [M]essages" })
+            vim.keymap.set("n", "<leader>xm", "<cmd>Noice dismiss<cr>", { desc = "Dismiss [M]essages" })
         end,
     },
     {
@@ -71,8 +72,16 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = { options = { theme = "tokyonight" } },
     },
+    {
+        "stevearc/overseer.nvim",
+        opts = { templates = { "builtin", "user.rojo_serve" } },
+        config = function(_, opts)
+            require("overseer").setup(opts)
+            vim.keymap.set("n", "<leader>rt", "<cmd>OverseerToggle<cr>", { desc = "Overseer [T]oggle" })
+            vim.keymap.set("n", "<leader>rr", "<cmd>OverseerRun<cr>", { desc = "Overseer [R]un" })
+        end,
+    },
     { "stevearc/dressing.nvim", opts = {} },
-    { "stevearc/overseer.nvim", opts = { templates = { "builtin", "user.rojo_serve" } } },
     { "max397574/better-escape.nvim", config = true },
     { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },

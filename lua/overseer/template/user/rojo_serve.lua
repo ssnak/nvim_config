@@ -1,11 +1,14 @@
+---@diagnostic disable: missing-fields
+---@type overseer.TemplateDefinition
 return {
-    name = "Rojo Serve",
+    name = "rojo",
     builder = function()
         return {
-            cmd = { "rojo" },
-            args = { "serve" },
+            cmd = "rojo serve",
+            components = { "unique" },
         }
     end,
+    desc = "Serve rojo project",
     condition = {
         filetype = { "luau" },
     },
