@@ -90,6 +90,15 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = true,
+        opts = {
+            options = {
+                theme = "tokyonight",
+            },
+        },
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
     },
 }
