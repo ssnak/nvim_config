@@ -145,6 +145,12 @@ return {
         "max397574/better-escape.nvim",
         config = true,
     },
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        opts = {},
+    },
 
     -- local plugins
     {
