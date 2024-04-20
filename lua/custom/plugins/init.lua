@@ -71,6 +71,8 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = { options = { theme = "tokyonight" } },
     },
+    { "stevearc/dressing.nvim", opts = {} },
+    { "stevearc/overseer.nvim", opts = { templates = { "builtin", "user.rojo_serve" } } },
     { "max397574/better-escape.nvim", config = true },
     { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
