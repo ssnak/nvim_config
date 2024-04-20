@@ -9,11 +9,6 @@ return {
         end,
     },
     {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-    },
-    {
         "johmsalas/text-case.nvim",
         dependencies = { "nvim-telescope/telescope.nvim" },
         config = function()
@@ -39,15 +34,9 @@ return {
             "LazyGitFilter",
             "LazyGitFilterCurrentFile",
         },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+        dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
-            {
-                "<leader>lg",
-                "<cmd>LazyGit<cr>",
-                desc = "LazyGit",
-            },
+            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
         },
     },
     {
@@ -78,27 +67,13 @@ return {
         opts = {},
     },
     {
-        "max397574/better-escape.nvim",
-        config = true,
-    },
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            options = {
-                theme = "tokyonight",
-            },
-        },
+        opts = { options = { theme = "tokyonight" } },
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
+    { "max397574/better-escape.nvim", config = true },
+    { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+    { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+    { "andweeb/presence.nvim", opts = { main_image = "file" }, enabled = false },
 }
