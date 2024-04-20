@@ -151,15 +151,6 @@ return {
         event = "VeryLazy",
         opts = {},
     },
-    {
-        "freddiehaddad/feline.nvim",
-        enabled = true,
-        config = function()
-            local opts = require "custom.configs.feline"
-            require("feline").setup(opts)
-            require("feline").winbar.setup()
-        end,
-    },
 
     -- local plugins
     {
