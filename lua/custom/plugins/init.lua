@@ -5,12 +5,7 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("oil").setup()
-            vim.keymap.set(
-                "n",
-                "<leader>o",
-                "<cmd>Oil<cr>",
-                { desc = "Open [O]il" }
-            )
+            vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Open [O]il" })
         end,
     },
     {
@@ -73,12 +68,7 @@ return {
         config = function(opts)
             require("noice").setup(opts)
             require("telescope").load_extension "noice"
-            vim.keymap.set(
-                "n",
-                "<leader>sm",
-                "<cmd>Telescope noice<cr>",
-                { desc = "[S]earch [M]essages" }
-            )
+            vim.keymap.set("n", "<leader>sm", "<cmd>Telescope noice<cr>", { desc = "[S]earch [M]essages" })
         end,
     },
     {
@@ -102,13 +92,13 @@ return {
             end, { desc = "Harpoon Select 1" })
             nmap("<leader>ak", function()
                 harpoon:list():select(2)
-            end, { desc = "Harpoon Select 1" })
+            end, { desc = "Harpoon Select 2" })
             nmap("<leader>al", function()
                 harpoon:list():select(3)
-            end, { desc = "Harpoon Select 1" })
+            end, { desc = "Harpoon Select 3" })
             nmap("<leader>a;", function()
                 harpoon:list():select(4)
-            end, { desc = "Harpoon Select 1" })
+            end, { desc = "Harpoon Select 4" })
             nmap("<leader>ah", function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
             end, { desc = "Harpoon menu" })
