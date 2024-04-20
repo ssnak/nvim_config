@@ -153,13 +153,11 @@ return {
     },
     {
         "freddiehaddad/feline.nvim",
-        opts = {},
-        config = function(_, opts)
+        enabled = true,
+        config = function()
+            local opts = require "custom.configs.feline"
             require("feline").setup(opts)
-            -- require('feline').winbar.setup()       -- to use winbar
-            -- require('feline').statuscolumn.setup() -- to use statuscolumn
-
-            -- require('feline').use_theme()          -- to use a custom theme
+            require("feline").winbar.setup()
         end,
     },
 
