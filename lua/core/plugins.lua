@@ -181,6 +181,7 @@ return {
             vim.list_extend(ensure_installed, require "core.mason_extras")
             require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
+            require("lspconfig").nushell.setup {capabilities = capabilities}
             require("mason-lspconfig").setup {
                 handlers = {
                     function(server_name)
@@ -320,6 +321,9 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        dependencies = {
+            { "nushell/tree-sitter-nu" },
+        },
         opts = {
             ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
             auto_install = true,
