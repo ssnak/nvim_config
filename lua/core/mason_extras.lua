@@ -1,5 +1,8 @@
 return {
-  'stylua',
-  'debugpy',
-  'selene',
+    "stylua",
+    "debugpy",
+    "selene",
+    "clang-format",
+    "delve",
+    "markdownlint",
 }

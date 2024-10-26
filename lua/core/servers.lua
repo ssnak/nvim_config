@@ -7,6 +7,7 @@ local servers = {
     rust_analyzer = {},
     tsserver = {},
     powershell_es = {},
+    glsl_analyzer = {},
     jsonls = {
         root_dir = function(fname)
             return util.root_pattern ".git"(fname)
