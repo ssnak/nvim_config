@@ -30,8 +30,8 @@ local servers = {
 }
 vim.filetype.add {
     extension = {
-        vert = "vert",
-        frag = "frag",
+        vert = "glsl",
+        frag = "glsl",
     },
 }
 

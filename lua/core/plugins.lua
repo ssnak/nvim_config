@@ -181,7 +181,7 @@ return {
             vim.list_extend(ensure_installed, require "core.mason_extras")
             require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
-            require("lspconfig").nushell.setup {capabilities = capabilities}
+            require("lspconfig").nushell.setup { capabilities = capabilities }
             require("mason-lspconfig").setup {
                 handlers = {
                     function(server_name)
