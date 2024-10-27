@@ -28,5 +28,11 @@ local servers = {
         },
     },
 }
+vim.filetype.add {
+    extension = {
+        vert = "vert",
+        frag = "frag",
+    },
+}
 
 return servers
