@@ -116,12 +116,6 @@ return {
             { "folke/neoconf.nvim", opts = {} },
             { "j-hui/fidget.nvim", opts = {} },
             { "folke/neodev.nvim", opts = {} },
-            {
-                "lopi-py/luau-lsp.nvim",
-                dependencies = {
-                    "nvim-lua/plenary.nvim",
-                },
-            },
         },
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
