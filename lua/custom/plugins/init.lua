@@ -88,5 +88,4 @@ return {
         event = { "BufReadPost", "BufNewFile" },
     },
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
-    { "andweeb/presence.nvim", opts = { main_image = "file" }, enabled = false },
 }
