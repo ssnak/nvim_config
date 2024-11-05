@@ -1,15 +1,16 @@
 return {
-  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  'folke/tokyonight.nvim',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
-  opts = {
-    transparent = true,
-  },
-  init = function()
-    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    vim.cmd.colorscheme 'tokyonight-night'
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    opts = {
+        transparent = true,
+    },
+    init = function()
+        -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+        vim.cmd.colorscheme "tokyonight-night"
 
-    -- You can configure highlights by doing something like:
-    vim.cmd.hi 'Comment gui=none'
-  end,
+        -- You can configure highlights by doing something like:
+        vim.cmd.hi "Comment gui=none"
+    end,
 }

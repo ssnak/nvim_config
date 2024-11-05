@@ -1,12 +1,11 @@
 return {
     {
         "stevearc/oil.nvim",
+        keys = {
+            { "<leader>o", vim.cmd.Oil, desc = "Open [O]il" },
+        },
         opts = {},
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("oil").setup()
-            vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Open [O]il" })
-        end,
     },
     {
         "johmsalas/text-case.nvim",
@@ -57,6 +56,7 @@ return {
     {
 
         "ThePrimeagen/harpoon",
+        keys = { "<leader>aa", "<leader>ah", "<leader>aj", "<leader>ak", "<leader>al", "<leader>a;" },
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = require "custom.configs.harpoon",
@@ -69,6 +69,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
+        event = "VimEnter",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = { theme = "tokyonight" },
@@ -80,16 +81,22 @@ return {
     {
         "stevearc/overseer.nvim",
         opts = { templates = { "builtin", "user.rojo_serve" } },
+        enabled = false,
         config = function(_, opts)
             require("overseer").setup(opts)
             vim.keymap.set("n", "<leader>rt", "<cmd>OverseerToggle<cr>", { desc = "Overseer [T]oggle" })
             vim.keymap.set("n", "<leader>rr", "<cmd>OverseerRun<cr>", { desc = "Overseer [R]un" })
         end,
     },
-    { "stevearc/dressing.nvim", opts = {} },
-    { "max397574/better-escape.nvim", config = true },
-    { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+    { "stevearc/dressing.nvim", opts = {}, event = "VimEnter" },
+    { "max397574/better-escape.nvim", config = true, event = "InsertEnter" },
+    { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        event = { "BufReadPost", "BufNewFile" },
+    },
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
     { "andweeb/presence.nvim", opts = { main_image = "file" }, enabled = false },
 }
