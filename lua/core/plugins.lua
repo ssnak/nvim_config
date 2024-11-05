@@ -1,6 +1,4 @@
 return {
-    -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
     { "numToStr/Comment.nvim", opts = {}, event = { "BufReadPre", "BufNewFile" } },
 
     {
@@ -188,7 +186,6 @@ return {
             vim.list_extend(ensure_installed, require "core.mason_extras")
             require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
-            require("lspconfig").nushell.setup { capabilities = capabilities }
             require("mason-lspconfig").setup {
                 handlers = {
                     function(server_name)
@@ -196,13 +193,6 @@ return {
                         server.capabilities =
                             vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                         require("lspconfig")[server_name].setup(server)
-                    end,
-                    luau_lsp = function()
-                        require("luau-lsp").setup {
-                            fflags = {
-                                sync = false,
-                            },
-                        }
                     end,
                 },
             }
@@ -331,16 +321,14 @@ return {
         build = ":TSUpdate",
         dependencies = {
             { "nvim-treesitter/nvim-treesitter-textobjects" },
-            { "nushell/tree-sitter-nu" },
         },
         opts = {
             ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
             auto_install = true,
             highlight = {
                 enable = true,
-                additional_vim_regex_highlighting = { "ruby" },
             },
-            indent = { enable = true, disable = { "ruby" } },
+            indent = { enable = true },
             textobjects = {
                 select = {
                     enable = true,

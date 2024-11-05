@@ -79,7 +79,11 @@ return {
         },
     },
     { "stevearc/dressing.nvim", opts = {}, event = "VimEnter" },
-    { "max397574/better-escape.nvim", config = true, event = "InsertEnter" },
+    {
+        "max397574/better-escape.nvim",
+        config = {},
+        event = "InsertEnter",
+    },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
     {
         "lukas-reineke/indent-blankline.nvim",

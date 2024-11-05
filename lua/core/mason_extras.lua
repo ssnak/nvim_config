@@ -1,8 +1,9 @@
 return {
     "stylua",
-    "debugpy",
     "selene",
     "clang-format",
-    "delve",
     "markdownlint",
+    "cpplint",
+    "cmakelint",
+    "cmakelang",
 }

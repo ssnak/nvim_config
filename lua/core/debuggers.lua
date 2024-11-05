@@ -1,4 +1,1 @@
-return {
-  'delve',
-  'debugpy',
-}
+return {}
