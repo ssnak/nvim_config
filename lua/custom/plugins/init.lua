@@ -63,7 +63,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        branch = "dev",
+        branch = "main",
         keys = require("custom.configs.trouble").keys,
         opts = {},
     },

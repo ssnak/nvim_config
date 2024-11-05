@@ -24,7 +24,7 @@ return {
             { "<F3>", dap.step_out, desc = "Debug: Step Out" },
             { "<F5>", dap.continue, desc = "Debug: Start/Continue" },
             { "<F7>", dapui.toggle, desc = "Debug: See last session result" },
-            { "<leader>b", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoitn" },
+            { "<leader>b", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
             {
                 "<leader>B",
                 function()
