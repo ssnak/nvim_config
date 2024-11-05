@@ -78,16 +78,6 @@ return {
             },
         },
     },
-    {
-        "stevearc/overseer.nvim",
-        opts = { templates = { "builtin", "user.rojo_serve" } },
-        enabled = false,
-        config = function(_, opts)
-            require("overseer").setup(opts)
-            vim.keymap.set("n", "<leader>rt", "<cmd>OverseerToggle<cr>", { desc = "Overseer [T]oggle" })
-            vim.keymap.set("n", "<leader>rr", "<cmd>OverseerRun<cr>", { desc = "Overseer [R]un" })
-        end,
-    },
     { "stevearc/dressing.nvim", opts = {}, event = "VimEnter" },
     { "max397574/better-escape.nvim", config = true, event = "InsertEnter" },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
