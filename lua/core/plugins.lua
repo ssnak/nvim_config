@@ -322,6 +322,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         dependencies = {
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
             { "nushell/tree-sitter-nu" },
         },
         opts = {
@@ -332,6 +333,35 @@ return {
                 additional_vim_regex_highlighting = { "ruby" },
             },
             indent = { enable = true, disable = { "ruby" } },
+            textobjects = {
+                select = {
+                    enable = true,
+                    lookahead = true,
+                    keymaps = {
+                        ["af"] = { query = "@function.outer", desc = "function" },
+                        ["if"] = { query = "@function.inner", desc = "function" },
+                        ["ac"] = { query = "@class.outer", desc = "class" },
+                        ["ic"] = { query = "@class.inner", desc = "class" },
+                    },
+                    include_surrounding_whitespace = false,
+                },
+                move = {
+                    enable = true,
+                    set_jumps = false,
+                    goto_next_start = {
+                        ["]m"] = "@function.outer",
+                    },
+                    goto_next_end = {
+                        ["]M"] = "@function.outer",
+                    },
+                    goto_previous_start = {
+                        ["[m"] = "@function.outer",
+                    },
+                    goto_previous_end = {
+                        ["[M"] = "@function.outer",
+                    },
+                },
+            },
         },
         config = function(_, opts)
             ---@diagnostic disable-next-line: missing-fields
