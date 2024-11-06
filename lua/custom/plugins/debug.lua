@@ -11,6 +11,7 @@ return {
         "williamboman/mason.nvim",
         "jay-babu/mason-nvim-dap.nvim",
         -- Add your own debuggers here
+        "leoluz/nvim-dap-go",
     },
     --- @return LazyKeysSpec[]
     keys = function()
@@ -51,5 +52,12 @@ return {
         dap.listeners.after.event_initialized["dapui_config"] = dapui.open
         dap.listeners.before.event_terminated["dapui_config"] = dapui.close
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+        local mason = vim.fn.stdpath "data" .. "/mason"
+        local bin = mason .. "/bin"
+        -- local packages = mason .. "/packages"
+        require("dap-go").setup {
+            delve = { path = bin .. "/dlv.cmd", detached = vim.fn.has "win32" == 0, cwd = nil },
+        }
     end,
 }

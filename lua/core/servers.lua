@@ -2,6 +2,7 @@ local util = require "lspconfig.util"
 local servers = {
     clangd = {},
     cmake = {},
+    gopls = {},
     glsl_analyzer = {},
     jsonls = {
         root_dir = function(fname)
