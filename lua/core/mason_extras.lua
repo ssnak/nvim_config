@@ -6,6 +6,5 @@ return {
     "gofumpt",
     "markdownlint",
     "cpplint",
-    "cmakelint",
     "cmakelang",
 }
