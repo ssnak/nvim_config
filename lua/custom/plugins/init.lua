@@ -81,7 +81,7 @@ return {
     { "stevearc/dressing.nvim", opts = {}, event = "VimEnter" },
     {
         "max397574/better-escape.nvim",
-        config = {},
+        opts = {},
         event = "InsertEnter",
     },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
