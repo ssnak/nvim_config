@@ -92,4 +92,23 @@ return {
         event = { "BufReadPost", "BufNewFile" },
     },
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+    {
+        "https://github.com/ggandor/leap.nvim",
+        keys = {
+            {
+                "s",
+                function()
+                    require("leap").leap {}
+                end,
+                "Leap Forward",
+            },
+            {
+                "S",
+                function()
+                    require("leap").leap { backward = true }
+                end,
+                "Leap Forward",
+            },
+        },
+    },
 }
