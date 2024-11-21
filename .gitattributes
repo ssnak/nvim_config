@@ -1,0 +1,5 @@
+lua/core/servers.lua merge=ours
+lua/core/mason_extras.lua merge=ours
+lua/core/formatters.lua merge=ours
+lua/core/linters.lua merge=ours
+lua/core/debuggers.lua merge=ours

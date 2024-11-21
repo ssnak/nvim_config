@@ -12,11 +12,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = { "*.go", "*.mod" },
-    callback = function()
-        vim.opt.tabstop = 4
-        vim.opt.expandtab = false
-    end,
-})
 return {}

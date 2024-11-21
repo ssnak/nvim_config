@@ -11,7 +11,6 @@ return {
         "williamboman/mason.nvim",
         "jay-babu/mason-nvim-dap.nvim",
         -- Add your own debuggers here
-        "leoluz/nvim-dap-go",
     },
     --- @return LazyKeysSpec[]
     keys = function()
@@ -38,16 +37,7 @@ return {
         local dapui = require "dapui"
 
         require("mason-nvim-dap").setup {
-            handlers = {
-                delve = function()
-                    local mason = vim.fn.stdpath "data" .. "/mason"
-                    local bin = mason .. "/bin"
-                    -- local packages = mason .. "/packages"
-                    require("dap-go").setup {
-                        delve = { path = bin .. "/dlv.cmd", detached = vim.fn.has "win32" == 0, cwd = nil },
-                    }
-                end,
-            },
+            handlers = {},
             automatic_installation = false,
             ensure_installed = require "core.debuggers",
         }
