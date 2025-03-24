@@ -138,6 +138,11 @@ return {
                 vim.cmd.ObsidianRename,
                 desc = "Rename Note",
             },
+            {
+                "<leader>nt",
+                vim.cmd.ObsidianTags,
+                desc = "Search Notes By Tag",
+            },
         },
         opts = {
             workspaces = {
