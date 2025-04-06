@@ -148,7 +148,7 @@ return {
             workspaces = {
                 {
                     name = "personal",
-                    path = "~/vaults/personal",
+                    path = "/mnt/c/Users/sergr/vaults/personal",
                 },
             },
             completion = {
