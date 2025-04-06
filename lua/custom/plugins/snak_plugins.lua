@@ -7,6 +7,12 @@ local plugins = {
         },
         opts = {},
     },
+    {
+        "snak/key-replay.nvim",
+        enabled = false,
+        event = "InsertEnter",
+        opts = {},
+    },
 }
 
 return plugins
