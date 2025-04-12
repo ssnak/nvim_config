@@ -21,6 +21,16 @@ t.keys = {
         desc = "LSP Definitions / references / ... (Trouble)",
     },
     {
+        "<leader>cd",
+        "<cmd>Trouble lsp_definitions toggle focus=true<cr>",
+        desc = "LSP references (Trouble)",
+    },
+    {
+        "<leader>cr",
+        "<cmd>Trouble lsp_references toggle focus=true<cr>",
+        desc = "LSP references (Trouble)",
+    },
+    {
         "<leader>xL",
         "<cmd>Trouble loclist toggle<cr>",
         desc = "Location List (Trouble)",
