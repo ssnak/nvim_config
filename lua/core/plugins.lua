@@ -32,7 +32,13 @@ return {
                 { "<leader>s_", hidden = true },
                 { "<leader>w", group = "[W]orkspace" },
                 { "<leader>w_", hidden = true },
+                { "<leader>v", group = "[V]im" },
+                { "<leader>v_", hidden = true },
+                { "<leader>x", group = "Trouble" },
+                { "<leader>x_", hidden = true },
             }
+            vim.keymap.set("n", "<leader>vl", ":Lazy<cr>", { desc = "[l]azy package manager" })
+            vim.keymap.set("n", "<leader>vm", ":Mason<cr>", { desc = "[m]ason software installer" })
         end,
     },
 
@@ -76,6 +82,7 @@ return {
             vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
             vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
             vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+            vim.keymap.set("n", "<leader>vc", ":Telescope colorscheme<cr>", { desc = "[c]olortheme" })
             vim.keymap.set(
                 "n",
                 "<leader>s.",

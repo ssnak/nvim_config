@@ -100,10 +100,6 @@ return {
                     desc = "[q]uiet preview",
                     ft = "quarto",
                 },
-                { "<leader>v", group = "[v]im" },
-                { "<leader>vc", ":Telescope colorscheme<cr>", desc = "[c]olortheme" },
-                { "<leader>vl", ":Lazy<cr>", desc = "[l]azy package manager" },
-                { "<leader>vm", ":Mason<cr>", desc = "[m]ason software installer" },
             }
         end,
     },
