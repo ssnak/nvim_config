@@ -13,6 +13,7 @@ return {
                 enabled = false,
             },
         },
+        ft = "quarto",
         keys = function()
             local is_code_chunk = function()
                 local current, _ = require("otter.keeper").get_current_language_context()
@@ -124,6 +125,7 @@ return {
     },
     {
         "jbyuki/nabla.nvim",
+        ft = "quarto",
         keys = {
             {
                 "<leader>qm",
