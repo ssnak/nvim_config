@@ -1,7 +1,4 @@
-require "core.mappings"
-require "core.settings"
-require "core.misc"
-require "custom"
+require "core"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -10,7 +7,8 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(require "core.plugins", {
+require("lazy").setup({import = "plugins"}, {
+
     defaults = {
         lazy = true,
     },

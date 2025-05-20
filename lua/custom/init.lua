@@ -1,3 +1,0 @@
-require 'custom.autocmds'
-
-return {}

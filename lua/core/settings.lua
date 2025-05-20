@@ -4,9 +4,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
--- vim.opt.mouse = 'a'
 vim.opt.showmode = false
--- vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
@@ -26,5 +24,8 @@ vim.opt.tabstop = 8
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.fileformat = "unix"
+vim.opt.fileformats = "unix,dos"
+vim.opt.conceallevel = 2
 
 return {}

@@ -37,12 +37,21 @@ return {
     config = function()
         local dap = require "dap"
         local dapui = require "dapui"
+        local mason = vim.fn.stdpath "data" .. "/mason"
+        local bin = mason .. "/bin"
+        local packages = mason .. "/packages"
 
         require("mason-nvim-dap").setup {
-            automatic_setup = true,
-            handlers = {},
+            handlers = {
+                delve = function()
+                    require("dap-go").setup {
+                        delve = { path = bin .. "/dlv.cmd", detached = vim.fn.has "win32" == 0, cwd = nil },
+                    }
+                end,
+            },
             automatic_installation = false,
-            ensure_installed = require "core.debuggers",
+            automatic_setup = true,
+            ensure_installed = require "configs.debuggers",
         }
 
         --- @diagnostic disable-next-line: missing-fields
@@ -54,14 +63,6 @@ return {
         dap.listeners.before.event_terminated["dapui_config"] = dapui.close
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-        -- golang specific config
-        local mason = vim.fn.stdpath "data" .. "/mason"
-        local bin = mason .. "/bin"
-        local packages = mason .. "/packages"
-        require("dap-go").setup {
-            delve = { path = bin .. "/dlv.cmd", detached = vim.fn.has "win32" == 0, cwd = nil },
-        }
-        -- python specific config
         require("dap-python").setup(packages .. "/debugpy/venv/Scripts/python")
     end,
 }
