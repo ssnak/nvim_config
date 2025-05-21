@@ -28,7 +28,7 @@ return {
         opts = {
             options = { theme = "tokyonight" },
             sections = {
-                lualine_x = { "encoding", "overseer", "filetype" },
+                lualine_x = { "encoding", "filetype" },
             },
         },
     },
