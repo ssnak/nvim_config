@@ -116,17 +116,16 @@ return {
         end,
     },
     {
-        "kdheepak/lazygit.nvim",
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        dependencies = { "nvim-lua/plenary.nvim" },
+        "folke/snacks.nvim",
+        opts = { lazygit = {} },
         keys = {
-            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+            {
+                "<leader>lg",
+                function()
+                    require("snacks").lazygit.open()
+                end,
+                desc = "LazyGit",
+            },
         },
     },
     {
