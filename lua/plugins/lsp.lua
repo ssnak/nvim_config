@@ -2,8 +2,8 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
 
         { "folke/neoconf.nvim", opts = {} },
@@ -98,6 +98,9 @@ return {
         require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
         require("mason-lspconfig").setup {
+            -- Uncomment this when updating
+            -- automatic_enable = false,
+            -- ensure_installed = {},
             handlers = {
                 function(server_name)
                     local server = servers[server_name] or {}
