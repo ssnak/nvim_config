@@ -1,9 +1,14 @@
 return {
-    { "numToStr/Comment.nvim", opts = {}, event = { "BufReadPre", "BufNewFile" } },
+    { "nvim-lua/plenary.nvim" },
+    {
+        "numToStr/Comment.nvim",
+        opts = {},
+        keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
+    },
 
     {
         "lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         opts = {
             signs = {
                 add = { text = "+" },
@@ -17,7 +22,7 @@ return {
 
     {
         "folke/which-key.nvim",
-        event = "VimEnter",
+        event = "VeryLazy",
         config = function()
             require("which-key").setup()
 
@@ -41,7 +46,6 @@ return {
         event = "VimEnter",
         branch = "0.1.x",
         dependencies = {
-            "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
@@ -217,18 +221,14 @@ return {
     },
     {
         "folke/todo-comments.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
         opts = { signs = false },
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "BufEnter",
         build = ":TSUpdate",
-        dependencies = {
-            { "nvim-treesitter/nvim-treesitter-textobjects" },
-            { "nushell/tree-sitter-nu" },
-        },
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         opts = {
             ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
             auto_install = true,

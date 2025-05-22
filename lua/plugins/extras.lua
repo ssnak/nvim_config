@@ -23,7 +23,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = { theme = "tokyonight" },
@@ -54,10 +54,8 @@ return {
     {
         "epwalsh/obsidian.nvim",
         version = "*",
-        lazy = true,
         ft = "markdown",
         dependencies = {
-            "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",
             "nvim-telescope/telescope.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -98,7 +96,7 @@ return {
     },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
     { "max397574/better-escape.nvim", event = "InsertEnter", opts = {} },
-    { "stevearc/dressing.nvim", event = "VimEnter", opts = {} },
+    { "stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
     { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
     {
         "folke/noice.nvim",
@@ -132,7 +130,7 @@ return {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {},
-        event = { "BufReadPost", "BufNewFile" },
+        event = "BufEnter",
     },
     {
         "johmsalas/text-case.nvim",
