@@ -35,5 +35,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
         vim.api.nvim_set_hl(0, "SpellLocal", { underline = true, fg = "#00ff00", ctermfg = "green" }) -- Green squiggles
     end,
 })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.conceallevel = 1
+    end,
+})
 
 return {}
