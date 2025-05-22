@@ -9,6 +9,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
+        tag = "release",
         opts = {
             signs = {
                 add = { text = "+" },

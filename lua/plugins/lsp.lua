@@ -1,10 +1,11 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        version = "1.*",
         event = "VeryLazy",
         dependencies = {
-            { "mason-org/mason.nvim" },
-            { "mason-org/mason-lspconfig.nvim" },
+            { "mason-org/mason.nvim", branch = "v1.x" },
+            { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
             { "folke/neoconf.nvim", opts = {} },
