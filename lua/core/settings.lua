@@ -1,31 +1,31 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.wrap = false
-vim.opt.showmode = false
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.inccommand = "split"
-vim.opt.cursorline = true
-vim.opt.scrolloff = 10
-vim.opt.hlsearch = true
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.fileformat = "unix"
-vim.opt.fileformats = "unix,dos"
-vim.opt.conceallevel = 0
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.wrap = false
+vim.o.showmode = false
+vim.o.breakindent = true
+vim.o.undofile = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.signcolumn = "yes"
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.list = true
+vim.o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.o.inccommand = "split"
+vim.o.cursorline = true
+vim.o.scrolloff = 10
+vim.o.hlsearch = true
+vim.o.tabstop = 8
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.fileformat = "unix"
+vim.o.fileformats = "unix,dos"
+vim.o.conceallevel = 0
 
 return {}
