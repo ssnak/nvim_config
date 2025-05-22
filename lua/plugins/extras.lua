@@ -62,6 +62,7 @@ return {
         },
         keys = require("configs.obsidian").keys,
         opts = require("configs.obsidian").opts,
+        cmd = require("configs.obsidian").cmd,
     },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
     { "max397574/better-escape.nvim", event = "InsertEnter", opts = {} },
