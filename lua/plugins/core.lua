@@ -231,7 +231,7 @@ return {
         build = ":TSUpdate",
         dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         opts = {
-            ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+            ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "regex" },
             auto_install = true,
             highlight = {
                 enable = true,
