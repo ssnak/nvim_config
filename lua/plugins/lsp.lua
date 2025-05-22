@@ -1,5 +1,4 @@
 return {
-    { "lopi-py/luau-lsp.nvim" },
     {
         "neovim/nvim-lspconfig",
         event = "VeryLazy",
@@ -107,13 +106,6 @@ return {
                         server.capabilities =
                             vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                         require("lspconfig")[server_name].setup(server)
-                    end,
-                    luau_lsp = function()
-                        require("luau-lsp").setup {
-                            fflags = {
-                                sync = false,
-                            },
-                        }
                     end,
                 },
             }
