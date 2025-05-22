@@ -26,6 +26,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.fileformat = "unix"
 vim.opt.fileformats = "unix,dos"
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 
 return {}
