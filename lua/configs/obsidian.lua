@@ -29,7 +29,7 @@ local t = {
             },
         },
         completion = {
-            nvim_cmp = true,
+            nvim_cmp = false, -- Setting completion manually during setup with blink.compat
         },
     },
     cmd = {

@@ -56,13 +56,36 @@ return {
         version = "*",
         ft = "markdown",
         dependencies = {
-            "hrsh7th/nvim-cmp",
             "nvim-telescope/telescope.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
         keys = require("configs.obsidian").keys,
-        opts = require("configs.obsidian").opts,
         cmd = require("configs.obsidian").cmd,
+        opts = require("configs.obsidian").opts,
+        config = function(_, opts)
+            require("obsidian").setup(opts)
+            local cmp = require "cmp"
+            local blink_cmp = require "blink-cmp"
+            cmp.register_source("obsidian", require("cmp_obsidian").new())
+            cmp.register_source("obsidian_new", require("cmp_obsidian_new").new())
+            cmp.register_source("obsidian_tags", require("cmp_obsidian_tags").new())
+
+            blink_cmp.add_source_provider("cmp_obsidian", {
+                name = "obsidian",
+                module = "blink.compat.source",
+            })
+            blink_cmp.add_source_provider("cmp_obsidian_new", {
+                name = "obsidian_new",
+                module = "blink.compat.source",
+            })
+            blink_cmp.add_source_provider("cmp_obsidian_tags", {
+                name = "obsidian_tags",
+                module = "blink.compat.source",
+            })
+            blink_cmp.add_filetype_source("markdown", "cmp_obsidian")
+            blink_cmp.add_filetype_source("markdown", "cmp_obsidian_new")
+            blink_cmp.add_filetype_source("markdown", "cmp_obsidian_tags")
+        end,
     },
     { "kylechui/nvim-surround", version = "*", keys = { "ys", "cs", "ds" }, opts = {} },
     { "max397574/better-escape.nvim", event = "InsertEnter", opts = {} },
