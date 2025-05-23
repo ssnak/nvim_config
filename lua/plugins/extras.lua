@@ -81,6 +81,16 @@ return {
             require("telescope").load_extension "noice"
             vim.keymap.set("n", "<leader>sm", "<cmd>Telescope noice<cr>", { desc = "[S]earch [M]essages" })
             vim.keymap.set("n", "<leader>xm", "<cmd>Noice dismiss<cr>", { desc = "Dismiss [M]essages" })
+            vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
+                if not require("noice.lsp").scroll(4) then
+                    return "<c-f>"
+                end
+            end, { silent = true, expr = true })
+            vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
+                if not require("noice.lsp").scroll(-4) then
+                    return "<c-b>"
+                end
+            end, { silent = true, expr = true })
         end,
     },
     {
