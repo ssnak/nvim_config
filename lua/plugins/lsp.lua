@@ -3,7 +3,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         version = "1.*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         dependencies = {
             { "mason-org/mason.nvim", branch = "v1.x" },
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
