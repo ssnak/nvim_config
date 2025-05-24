@@ -11,6 +11,13 @@ return {
 
             { "folke/neoconf.nvim", opts = {} },
             { "j-hui/fidget.nvim", opts = {} },
+            {
+                "nvimdev/lspsaga.nvim",
+                opts = {
+                    lightbulb = { sign = false },
+                    rename = { in_select = false },
+                },
+            },
         },
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -21,24 +28,30 @@ return {
                     end
 
                     --  To jump back, press <C-t>.
-                    map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-                    map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-                    map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-                    map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+                    map("<leader>sld", require("telescope.builtin").lsp_definitions, "[S]earch [D]efinition")
+                    map("<leader>slr", require("telescope.builtin").lsp_references, "[S]earch [R]eferences")
                     map(
-                        "<leader>ds",
+                        "<leader>sli",
+                        require("telescope.builtin").lsp_implementations,
+                        "[S]earch [I]mplementation"
+                    )
+                    map("<leader>slt", require("telescope.builtin").lsp_type_definitions, "[T]ype Definition")
+                    map(
+                        "<leader>sld",
                         require("telescope.builtin").lsp_document_symbols,
-                        "[D]ocument [S]ymbols"
+                        "[D]ocument Symbols"
                     )
                     map(
-                        "<leader>ws",
+                        "<leader>slw",
                         require("telescope.builtin").lsp_dynamic_workspace_symbols,
-                        "[W]orkspace [S]ymbols"
+                        "[W]orkspace Symbols"
                     )
-                    map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-                    map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-                    map("K", vim.lsp.buf.hover, "Hover Documentation")
-                    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+                    map("grn", "<cmd>Lspsaga rename<cr>", "[R]e[n]ame")
+                    map("gra", "<cmd>Lspsaga code_action<cr>", "Code [A]ction")
+                    map("gpd", "<cmd>Lspsaga peek_definition<cr>", "[P]eek [D]efinition")
+                    map("gpt", "<cmd>Lspsaga peek_type_definition<cr>", "[P]eek [T]ype Definition")
+                    map("gO", "<cmd>Lspsaga outline<cr>", "Document Symbols")
+                    map("grk", "<cmd>Lspsaga hover_doc ++keep<cr>", "Hover")
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     local bufnr = event.buf

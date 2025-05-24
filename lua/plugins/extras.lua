@@ -103,7 +103,11 @@ return {
             require("noice").setup {}
             require("telescope").load_extension "noice"
             vim.keymap.set("n", "<leader>sm", "<cmd>Telescope noice<cr>", { desc = "[S]earch [M]essages" })
-            vim.keymap.set("n", "<leader>xm", "<cmd>Noice dismiss<cr>", { desc = "Dismiss [M]essages" })
+            vim.keymap.set("n", "<leader>md", "<cmd>NoiceDismiss<cr>", { desc = "[M]essages [D]ismiss" })
+            vim.keymap.set("n", "<leader>ma", "<cmd>NoiceAll<cr>", { desc = "[M]essages [A]ll" })
+            vim.keymap.set("n", "<leader>ml", "<cmd>NoiceLast<cr>", { desc = "[M]essages [L]ast" })
+            vim.keymap.set("n", "<leader>me", "<cmd>NoiceErrors<cr>", { desc = "[M]essages [E]rrors" })
+            vim.keymap.set("n", "<leader>mh", "<cmd>NoiceHistory<cr>", { desc = "[M]essages [H]istory" })
             vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
                 if not require("noice.lsp").scroll(4) then
                     return "<c-f>"
