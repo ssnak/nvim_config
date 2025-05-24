@@ -28,6 +28,15 @@ return {
         opts = {
             options = { theme = "tokyonight" },
             sections = {
+                lualine_a = {
+                    {
+                        "mode",
+                        fmt = function(str)
+                            local reg = vim.fn.reg_recording()
+                            return reg ~= "" and "REC @" .. reg or str
+                        end,
+                    },
+                },
                 lualine_x = { "encoding", "filetype" },
             },
         },
