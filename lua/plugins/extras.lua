@@ -11,10 +11,7 @@ return {
                 pattern = "OilActionsPost",
                 callback = function(event)
                     if event.data.actions.type == "move" then
-                        require("snacks").rename.on_rename_file(
-                            event.data.actions.src_url,
-                            event.data.actions.dest_url
-                        )
+                        Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
                     end
                 end,
             })
@@ -224,12 +221,14 @@ return {
     },
     {
         "folke/snacks.nvim",
-        opts = { lazygit = {} },
+        lazy = false,
+        priority = 1000,
+        opts = { lazygit = {}, quickfile = {} },
         keys = {
             {
                 "<leader>lg",
                 function()
-                    require("snacks").lazygit.open()
+                    Snacks.lazygit.open()
                 end,
                 desc = "LazyGit",
             },
