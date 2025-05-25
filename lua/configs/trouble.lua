@@ -55,6 +55,11 @@ t.keys = {
         "<cmd>Trouble qflist toggle focus<cr>",
         desc = "Quickfix List (Trouble)",
     },
+    {
+        "<leader>tt",
+        "<cmd>Trouble todo toggle focus<cr>",
+        desc = "Todo List (Trouble)",
+    },
 }
 
 return t

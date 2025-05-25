@@ -30,6 +30,7 @@ return {
         "folke/trouble.nvim",
         branch = "main",
         keys = require("configs.trouble").keys,
+        cmd = "Trouble",
         opts = {},
     },
     {
@@ -238,6 +239,13 @@ return {
         "folke/todo-comments.nvim",
         event = "VeryLazy",
         opts = { signs = false },
+        keys = {
+            {
+                "<leader>st",
+                "<cmd>TodoTelescope<cr>",
+                desc = "[S]earch [T]odos",
+            },
+        },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
