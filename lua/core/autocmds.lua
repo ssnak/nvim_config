@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd("FileType", {
                         },
                     },
                     format = {
-                        enabled = true,
+                        enabled = false,
                         settings = {
                             url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
                             profile = "GoogleStyle",
