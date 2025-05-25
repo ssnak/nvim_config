@@ -9,7 +9,16 @@ return {
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
-            { "folke/neoconf.nvim", opts = {} },
+            {
+                "folke/neoconf.nvim",
+                opts = {
+                    import = {
+                        vscode = false,
+                        coc = false,
+                        nlsp = false,
+                    },
+                },
+            },
             { "j-hui/fidget.nvim", opts = {} },
             {
                 "nvimdev/lspsaga.nvim",
