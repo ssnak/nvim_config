@@ -1,4 +1,5 @@
 return {
+    { "mfussenegger/nvim-jdtls" },
     { "folke/lazydev.nvim", ft = "lua", opts = {} },
     {
         "neovim/nvim-lspconfig",
@@ -20,17 +21,6 @@ return {
                 },
             },
             { "j-hui/fidget.nvim", opts = {} },
-            {
-                "nvim-java/nvim-java",
-                opts = {
-                    spring_boot_tools = {
-                        enable = false,
-                    },
-                },
-                jdk = {
-                    auto_install = false,
-                },
-            },
             {
                 "nvimdev/lspsaga.nvim",
                 opts = {
@@ -141,6 +131,7 @@ return {
                             vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                         require("lspconfig")[server_name].setup(server)
                     end,
+                    jdtls = function() end,
                 },
             }
         end,
