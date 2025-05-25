@@ -122,6 +122,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         event = "BufEnter",
+        branch = "master",
         build = ":TSUpdate",
         dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         opts = {
