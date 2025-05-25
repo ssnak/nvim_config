@@ -12,6 +12,7 @@ local servers = {
     powershell_es = {},
     zls = {},
     dcm = {},
+    jdtls = {},
     rust_analyzer = {},
     glsl_analyzer = {},
     jsonls = {
