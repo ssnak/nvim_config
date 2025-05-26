@@ -21,6 +21,8 @@ return {
                 { "<leader>h", group = "Git [H]unk" },
                 { "<leader>a", group = "Harpoon" },
                 { "<leader>n", group = "Obsidian" },
+                { "<leader>v", group = "[V]im" },
+                { "<leader>vt", group = "[T]ools" },
             }
         end,
     },
