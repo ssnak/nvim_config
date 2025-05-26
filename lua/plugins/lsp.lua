@@ -120,6 +120,11 @@ return {
             end)()
             require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
+            -- mason-tool-installer depends on VimEnter autocommand, snacks
+            -- quickfile defers the loading of plugins and the autocommand is
+            -- set after the event
+            require("mason-tool-installer").check_install()
+
             require("mason-lspconfig").setup {
                 -- Uncomment this when updating
                 -- automatic_enable = false,
