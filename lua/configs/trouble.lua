@@ -27,8 +27,13 @@ t.keys = {
     },
     {
         "<leader>ts",
-        "<cmd>Trouble lsp_document_symbols toggle focus<cr>",
+        "<cmd>Trouble symbols toggle focus<cr>",
         desc = "Symbols (Trouble)",
+    },
+    {
+        "<leader>tS",
+        "<cmd>Trouble lsp_document_symbols toggle focus win.type=float<cr>",
+        desc = "Symbols Full (Trouble)",
     },
     {
         "<leader>td",
