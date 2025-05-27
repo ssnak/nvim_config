@@ -29,6 +29,7 @@ local servers = {
             },
         },
     },
+    luau_lsp = {},
 }
 vim.filetype.add {
     extension = {

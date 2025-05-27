@@ -1,5 +1,6 @@
 return {
     { "mfussenegger/nvim-jdtls" },
+    { "lopi-py/luau-lsp.nvim" },
     { "folke/lazydev.nvim", ft = "lua", opts = {} },
     {
         "neovim/nvim-lspconfig",
@@ -137,6 +138,12 @@ return {
                         require("lspconfig")[server_name].setup(server)
                     end,
                     jdtls = function() end,
+                    luau_lsp = function()
+                        require("luau-lsp").setup {
+                            server = { capabilities = capabilities },
+                            plugin = { enabled = true, port = 3667 },
+                        }
+                    end,
                 },
             }
         end,
