@@ -48,6 +48,10 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "java",
     group = vim.api.nvim_create_augroup("java-lsp", {}),
     callback = function()
+        local root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" })
+        if not root_dir then
+            return
+        end
         local config = {
             cmd = {
                 "C:/Users/sergr/scoop/apps/openjdk21/current/bin/java.exe",
@@ -71,10 +75,10 @@ vim.api.nvim_create_autocmd("FileType", {
                 "C:/Users/sergr/scoop/apps/jdtls/current/config_win",
 
                 "-data",
-                "C:/Users/sergr/projects/modding/forge/1.8.9",
+                vim.fn.expand "~/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t"),
             },
 
-            root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
+            root_dir = root_dir,
             capabilities = vim.tbl_deep_extend(
                 "force",
                 vim.lsp.protocol.make_client_capabilities(),
@@ -97,6 +101,7 @@ vim.api.nvim_create_autocmd("FileType", {
                         includeDecompiledSources = true,
                     },
                     configuration = {
+                        updateBuildConfiguration = "interactive", -- disabled | interactive | automatic
                         runtimes = {
                             {
                                 name = "JavaSE-1.8",
@@ -120,21 +125,25 @@ vim.api.nvim_create_autocmd("FileType", {
                             profile = "GoogleStyle",
                         },
                     },
-                    referencedLibraries = {
-                        include = {
-                            "C:/Users/sergr/projects/modding/forge/1.8.9/fpkmod/.gradle/minecraft/forgeSrc-1.8.9-11.15.1.2318-1.8.9-PROJECT(fpkmod).jar",
-                        },
-                        sources = {
-                            {
-                                library = "C:/Users/sergr/projects/modding/forge/1.8.9/fpkmod/.gradle/minecraft/forgeSrc-1.8.9-11.15.1.2318-1.8.9-PROJECT(fpkmod).jar",
-                                source = "C:/Users/sergr/projects/modding/forge/1.8.9/fpkmod/.gradle/minecraft/forgeSrc-1.8.9-11.15.1.2318-1.8.9-PROJECT(fpkmod)-sources.jar",
-                            },
-                        },
-                    },
                 },
             },
             init_options = {
                 bundles = {},
+            },
+        }
+
+        local mc = vim.fs.joinpath(root_dir, ".gradle/minecraft")
+        local source = vim.fs.joinpath(mc, "source")
+        local lib = vim.fs.find(function(name, _)
+            return name:match "^forgeSrc-[%d%.%-]+%.jar$" ~= nil
+        end, { path = mc })[1]
+        config.settings.java.project = {
+            sourcePaths = { source },
+            referencedLibraries = {
+                include = { lib },
+                sources = {
+                    { library = lib, source = source },
+                },
             },
         }
 
