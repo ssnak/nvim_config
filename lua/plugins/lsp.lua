@@ -7,7 +7,7 @@ return {
         version = "1.*",
         event = "BufReadPre",
         dependencies = {
-            { "mason-org/mason.nvim", branch = "v1.x" },
+            { "mason-org/mason.nvim", branch = "v1.x", cmd = "Mason" },
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 

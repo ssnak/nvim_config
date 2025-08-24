@@ -132,20 +132,21 @@ vim.api.nvim_create_autocmd("FileType", {
             },
         }
 
-        local mc = vim.fs.joinpath(root_dir, ".gradle/minecraft")
-        local source = vim.fs.joinpath(mc, "source")
-        local lib = vim.fs.find(function(name, _)
-            return name:match "^forgeSrc-[%d%.%-]+%.jar$" ~= nil
-        end, { path = mc })[1]
-        config.settings.java.project = {
-            sourcePaths = { source },
-            referencedLibraries = {
-                include = { lib },
-                sources = {
-                    { library = lib, source = source },
-                },
-            },
-        }
+        -- local mc = vim.fs.joinpath(root_dir, ".gradle/minecraft")
+        -- local source = vim.fs.joinpath(mc, "source")
+        -- local lib = vim.fs.find(function(name, _)
+        --     return name:match "^forgeSrc-[%d%.%-]+%.jar$" ~= nil
+        -- end, { path = mc })[1]
+        -- config.settings.java.project = {
+        --     referencedLibraries = { "lib" },
+        -- sourcePaths = { "src/main/java", "src/main/resources", ".gradle/minecraft/source" },
+        -- referencedLibraries = {
+        --     include = { lib },
+        --     sources = {
+        --         { library = lib, source = source },
+        --     },
+        -- },
+        -- }
 
         require("jdtls").start_or_attach(config)
     end,
