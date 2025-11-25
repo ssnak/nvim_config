@@ -4,11 +4,11 @@ return {
     { "folke/lazydev.nvim", ft = "lua", opts = {} },
     {
         "neovim/nvim-lspconfig",
-        version = "1.*",
+        version = "2.*",
         event = "BufReadPre",
         dependencies = {
-            { "mason-org/mason.nvim", branch = "v1.x", cmd = "Mason" },
-            { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
+            { "mason-org/mason.nvim", version = "2.*", cmd = "Mason" },
+            { "mason-org/mason-lspconfig.nvim", version = "2.*" },
             { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
             {
