@@ -52,10 +52,42 @@ vim.api.nvim_create_autocmd("FileType", {
         if not root_dir then
             return
         end
+        local java_bin = "C:/Users/sergr/scoop/apps/openjdk21/current/bin/java.exe"
+        local launcher_jar =
+            "C:/Users/sergr/scoop/apps/jdtls/current/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
+        local configuration_file = "C:/Users/sergr/scoop/apps/jdtls/current/config_win"
+        local workspaces = vim.fn.expand "~/jdtls_workspaces/"
+        local default_home = "C:/Users/sergr/scoop/apps/openjdk8-redhat/current"
+        local java_runtimes = {
+            {
+                name = "JavaSE-1.8",
+                path = "C:/Users/sergr/scoop/apps/openjdk8-redhat/current",
+                default = true,
+            },
+            {
+                name = "JavaSE-17",
+                path = "C:/Users/sergr/scoop/apps/openjdk17/current",
+            },
+            {
+                name = "JavaSE-21",
+                path = "C:/Users/sergr/scoop/apps/openjdk21/current",
+            },
+        }
+        if vim.uv.os_uname().sysname == "Linux" then
+            java_bin = "/home/snak/.sdkman/candidates/java/21.0.8-tem/bin/java"
+            launcher_jar =
+                "/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251014-1222.jar"
+            configuration_file = "/usr/share/java/jdtls/config_linux"
+            workspaces = vim.fn.expand "~/.jdtls_workspaces/"
+            default_home = "/home/snak/.sdkman/candidates/java/8.0.462-tem"
+            java_runtimes[2] = java_runtimes[3]
+            java_runtimes[3] = nil
+            java_runtimes[1].path = "/home/snak/.sdkman/candidates/java/8.0.462-tem"
+            java_runtimes[2].path = "/home/snak/.sdkman/candidates/java/21.0.8-tem"
+        end
         local config = {
             cmd = {
-                "C:/Users/sergr/scoop/apps/openjdk21/current/bin/java.exe",
-
+                java_bin,
                 "-Declipse.application=org.eclipse.jdt.ls.core.id1",
                 "-Dosgi.bundles.defaultStartLevel=4",
                 "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -69,13 +101,13 @@ vim.api.nvim_create_autocmd("FileType", {
                 "java.base/java.lang=ALL-UNNAMED",
 
                 "-jar",
-                "C:/Users/sergr/scoop/apps/jdtls/current/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar",
+                launcher_jar,
 
                 "-configuration",
-                "C:/Users/sergr/scoop/apps/jdtls/current/config_win",
+                configuration_file,
 
                 "-data",
-                vim.fn.expand "~/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t"),
+                workspaces .. vim.fn.fnamemodify(root_dir, ":p:h:t"),
             },
 
             root_dir = root_dir,
@@ -90,7 +122,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
             settings = {
                 java = {
-                    home = "C:/Users/sergr/scoop/apps/openjdk8-redhat/current",
+                    home = default_home,
                     eclipse = {
                         downloadSources = true,
                     },
@@ -102,21 +134,7 @@ vim.api.nvim_create_autocmd("FileType", {
                     },
                     configuration = {
                         updateBuildConfiguration = "interactive", -- disabled | interactive | automatic
-                        runtimes = {
-                            {
-                                name = "JavaSE-1.8",
-                                path = "C:/Users/sergr/scoop/apps/openjdk8-redhat/current",
-                                default = true,
-                            },
-                            {
-                                name = "JavaSE-17",
-                                path = "C:/Users/sergr/scoop/apps/openjdk17/current",
-                            },
-                            {
-                                name = "JavaSE-21",
-                                path = "C:/Users/sergr/scoop/apps/openjdk21/current",
-                            },
-                        },
+                        runtimes = java_runtimes,
                     },
                     format = {
                         enabled = false,

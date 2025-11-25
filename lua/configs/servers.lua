@@ -30,11 +30,17 @@ local servers = {
         },
     },
     luau_lsp = {},
+    qmlls = {},
 }
 vim.filetype.add {
     extension = {
         vert = "glsl",
         frag = "glsl",
+    },
+}
+vim.filetype.add {
+    extension = {
+        re = "cpp", -- For re2c
     },
 }
 

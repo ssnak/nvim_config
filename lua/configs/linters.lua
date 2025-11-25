@@ -1,5 +1,5 @@
 local linters_by_ft = {
-    cpp = { "cpplint" },
+    -- cpp =  "cpplint" },
     cmake = { "cmakelang" },
 }
 
