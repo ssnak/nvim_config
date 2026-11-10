@@ -5,7 +5,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         version = "2.*",
-        event = "BufReadPre",
+        event = { "BufReadPre", "InsertEnter" },
         dependencies = {
             { "mason-org/mason.nvim", version = "2.*", cmd = "Mason" },
             { "mason-org/mason-lspconfig.nvim", version = "2.*" },
@@ -82,10 +82,11 @@ return {
                         local filetype = vim.bo[bufnr].filetype
                         if
                             (filetype == "cpp" or filetype == "c")
-                            and client.supports_method "textDocument/switchSourceHeader"
+                            and client:supports_method "textDocument/switchSourceHeader"
                         then
+                            -- TODO: Revisit this
                             vim.keymap.set("n", "gh", function()
-                                vim.cmd.ClangdSwitchSourceHeader()
+                                vim.cmd.LspClangdSwitchSourceHeader()
                             end, { desc = "Switch to header file" })
                         end
                     end
@@ -126,24 +127,24 @@ return {
             -- set after the event
             require("mason-tool-installer").check_install()
 
+            vim.lsp.config("*", {
+                root_markers = { ".git" },
+                capabilities = capabilities,
+            })
+
+            for server, config in pairs(servers) do
+                vim.lsp.config(server, config)
+            end
+            require("luau-lsp").setup {
+                plugin = { enabled = true, port = 3667 },
+            }
+
             require("mason-lspconfig").setup {
-                -- Uncomment this when updating
-                -- automatic_enable = false,
-                -- ensure_installed = {},
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities =
-                            vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                        require("lspconfig")[server_name].setup(server)
-                    end,
-                    jdtls = function() end,
-                    luau_lsp = function()
-                        require("luau-lsp").setup {
-                            server = { capabilities = capabilities },
-                            plugin = { enabled = true, port = 3667 },
-                        }
-                    end,
+                automatic_enable = {
+                    exclude = {
+                        "jdtls",
+                        "luau_lsp",
+                    },
                 },
             }
         end,

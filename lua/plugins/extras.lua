@@ -133,7 +133,7 @@ return {
         },
     },
     {
-        "https://github.com/ggandor/leap.nvim",
+        url = "https://codeberg.org/andyg/leap.nvim",
         keys = {
             {
                 "s",
@@ -153,6 +153,7 @@ return {
     },
     {
         "epwalsh/obsidian.nvim",
+        enabled = false,
         version = "*",
         ft = "markdown",
         dependencies = {

@@ -76,14 +76,21 @@ vim.api.nvim_create_autocmd("FileType", {
         if vim.uv.os_uname().sysname == "Linux" then
             java_bin = "/home/snak/.sdkman/candidates/java/21.0.8-tem/bin/java"
             launcher_jar =
-                "/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251014-1222.jar"
+                "/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar"
             configuration_file = "/usr/share/java/jdtls/config_linux"
             workspaces = vim.fn.expand "~/.jdtls_workspaces/"
-            default_home = "/home/snak/.sdkman/candidates/java/8.0.462-tem"
+            -- default_home = "/home/snak/.sdkman/candidates/java/8.0.462-tem"
+            default_home = "/home/snak/.sdkman/candidates/java/25.0.4-tem"
             java_runtimes[2] = java_runtimes[3]
             java_runtimes[3] = nil
             java_runtimes[1].path = "/home/snak/.sdkman/candidates/java/8.0.462-tem"
+            java_runtimes[1].default = false
             java_runtimes[2].path = "/home/snak/.sdkman/candidates/java/21.0.8-tem"
+            java_runtimes[3] = {
+                name = "JavaSE-25",
+                path = "/home/snak/.sdkman/candidates/java/25.0.4-tem",
+                default = true,
+            }
         end
         local config = {
             cmd = {
@@ -132,6 +139,9 @@ vim.api.nvim_create_autocmd("FileType", {
                     references = {
                         includeDecompiledSources = true,
                     },
+                    contentProvider = {
+                        preferred = "fernflower",
+                    },
                     configuration = {
                         updateBuildConfiguration = "interactive", -- disabled | interactive | automatic
                         runtimes = java_runtimes,
@@ -157,11 +167,26 @@ vim.api.nvim_create_autocmd("FileType", {
         -- end, { path = mc })[1]
         -- config.settings.java.project = {
         --     referencedLibraries = { "lib" },
-        -- sourcePaths = { "src/main/java", "src/main/resources", ".gradle/minecraft/source" },
+        -- sourcePaths = {
+        --     "src/main/java",
+        --     "src/main/resources",
+        --     "/home/snak/Desktop/Mods/CyvForge/.gradle/minecraft/source",
+        -- },
+        --     referencedLibraries = {
+        --         include = { lib },
+        --         sources = {
+        --             { library = lib, source = source },
+        --         },
+        --     },
         -- referencedLibraries = {
-        --     include = { lib },
+        --     include = {
+        --         "/home/snak/.gradle/caches/minecraft/net/minecraftforge/forge/1.8.9-11.15.1.2318-1.8.9/stable/22/forgeBin-1.8.9-11.15.1.2318-1.8.9.jar",
+        --     },
         --     sources = {
-        --         { library = lib, source = source },
+        --         {
+        --             library = "/home/snak/.gradle/caches/minecraft/net/minecraftforge/forge/1.8.9-11.15.1.2318-1.8.9/stable/22/forgeBin-1.8.9-11.15.1.2318-1.8.9.jar",
+        --             source = "/home/snak/Desktop/Mods/CyvForge/.gradle/minecraft/source/",
+        --         },
         --     },
         -- },
         -- }

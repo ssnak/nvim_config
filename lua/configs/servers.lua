@@ -1,8 +1,9 @@
-local lspconfig = require "lspconfig"
-local util = lspconfig.util
-lspconfig.dartls.setup {}
-lspconfig.nushell.setup {}
+-- local lspconfig = require "lspconfig"
+-- local util = lspconfig.util
+-- lspconfig.dartls.setup {}
+-- lspconfig.nushell.setup {}
 
+--- @type { [string]: vim.lsp.Config }
 local servers = {
     clangd = {},
     cmake = {},
@@ -14,11 +15,7 @@ local servers = {
     dcm = {},
     rust_analyzer = {},
     glsl_analyzer = {},
-    jsonls = {
-        root_dir = function(fname)
-            return util.root_pattern ".git"(fname)
-        end,
-    },
+    jsonls = {},
     lua_ls = {
         settings = {
             Lua = {
@@ -32,14 +29,13 @@ local servers = {
     luau_lsp = {},
     qmlls = {},
 }
+
 vim.filetype.add {
     extension = {
         vert = "glsl",
         frag = "glsl",
-    },
-}
-vim.filetype.add {
-    extension = {
+        vsh = "glsl",
+        fsh = "glsl",
         re = "cpp", -- For re2c
     },
 }
